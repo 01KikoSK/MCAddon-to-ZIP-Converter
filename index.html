@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MCAddon to ZIP Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+        .log {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MCAddon to ZIP Converter</h1>
+        <input type="file" id="fileInput" accept=".mcaddon">
+        <button onclick="convertMcaddon()">Convert to ZIP</button>
+        <div id="message" class="message"></div>
+        <div id="log" class="log"></div>
+    </div>
+
+    <script>
+        async function convertMcaddon() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            const messageDiv = document.getElementById('message');
+            const logDiv = document.getElementById('log');
+
+            if (file) {
+                if (file.name.endsWith('.mcaddon')) {
+                    const formData = new FormData();
+                    formData.append('file', file);
+
